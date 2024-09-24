@@ -147,7 +147,7 @@
               tasked with inferring the 3D semantic occupancy of a scene from sensory data.To improve accuracy, prior
               research has implemented various computationally demanding and memory-intensive 3D operations, imposing
               significant computational requirements on the platform during training and testing.This paper proposes
-              {\methodname}, a lightweight camera-centric SSC framework that also accommodates LiDAR inputs.With our
+              L2COcc, a lightweight camera-centric SSC framework that also accommodates LiDAR inputs.With our
               proposed efficient voxel transformer (EVT) and three types of cross-modal knowledge modules (FSD, TPVD,
               PAD), our method substantially reduce computational burden while maintaining high accuracy. The
               experimental evaluations demonstrate that our proposed method surpasses the current state-of-the-art
@@ -162,12 +162,27 @@
   </section>
   <!-- End paper abstract -->
 
+  <!-- Teaser video-->
+  <section class="hero teaser">
+    <h2 class="title is-3" style="margin-left: 465px; margin-top: 30px;"> Introduction Video</h2>
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!-- Your video here -->
+          <source src="static/videos/icra2025video.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+        </h2>
+      </div>
+    </div>
+  </section>
+  <!-- End teaser video -->
 
-  <!-- First image carousel -->
+  <!-- Cover and Method -->
   <section class="hero is-small">
     <div class="hero-body">
       <div class="container">
-        <h2 class="title">Method</h2>
+        <h2 class="title" style="margin-left: 215px;">Method</h2>
         <div id="results-carousel" class="carousel results-carousel">
           <div class="item" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
             <img src="static/images/cover.png" alt="MY ALT TEXT" style="width: 60%; height: auto;" />
@@ -179,9 +194,8 @@
             </div>
           </div>
           <div class="item">
-            <div style="width: 70%;"></div>
             <img src="static/images/method.png" alt="MY ALT TEXT"
-              style="display: block; margin: 0 auto; width: 75%; height: auto;" />
+              style="display: block; margin: 0 auto; width: 70%; height: auto;" />
           </div>
         </div>
       </div>
@@ -189,25 +203,36 @@
   </section>
 
   <section class="hero is-small">
-    <h2 class="title is-3" style="margin-left: 250px;"> Experience</h2>
     <div class="hero-body">
-      <!-- Directly displaying the image without container -->
-      <img src="static/images/experience.png" alt="Descriptive Alt Text"
-        style="display: block; margin: 0 auto; width: 50%; height: auto;" />
-      <h2 class="subtitle has-text-centered" style="margin-top: 20px;">
-      </h2>
+      <div class="container">
+        <h2 class="title" style="margin-left: 215px;">Experience</h2>
+        <div id="results-carousel" class="carousel results-carousel">
+          <div class="item">
+            <img src=" static/images/semantickitti.png" alt="MY ALT TEXT"
+              style="display: block; margin: 0 auto; width: 70%; height: auto; align-items: center;" />
+          </div>
+          <div class="item">
+            <img src="static/images/kitti360.png" alt="MY ALT TEXT"
+              style="display: block; margin: 0 auto; width: 70%; height: auto; align-items: center;" />
+          </div>
+          <div class="item">
+            <img src="static/images/efficiency.png" alt="MY ALT TEXT"
+              style="display: block; margin: 0 auto; width: 50%; height: auto; align-items: center;" />
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
 
   <!-- Teaser video-->
   <section class="hero teaser">
-    <h2 class="title is-3" style="margin-left: 250px;"> Visualization Of SSC</h2>
+    <h2 class="title is-3" style="margin-left: 465px; margin-top: 30px;"> Visualization For SSC</h2>
     <div class="container is-max-desktop">
       <div class="hero-body">
         <video poster="" id="tree" autoplay controls muted loop height="100%">
           <!-- Your video here -->
-          <source src="static/videos/pred_h264.mp4" type="video/mp4">
+          <source src="static/videos/pred_h264_full.mp4" type="video/mp4">
         </video>
         <h2 class="subtitle has-text-centered">
         </h2>
@@ -218,12 +243,12 @@
 
   <!-- Teaser video-->
   <section class="hero teaser">
-    <h2 class="title is-3" style="margin-left: 250px;"> Visualization Of TPV Feature</h2>
+    <h2 class="title is-3" style="margin-left: 465px; margin-top: 30px;"> Visualization For TPV Feature</h2>
     <div class="container is-max-desktop">
       <div class="hero-body">
         <video poster="" id="tree" autoplay controls muted loop height="100%">
           <!-- Your video here -->
-          <source src="static/videos/tpv_h264.mp4" type="video/mp4">
+          <source src="static/videos/tpv_h264_full.mp4" type="video/mp4">
         </video>
         <h2 class="subtitle has-text-centered">
         </h2>
