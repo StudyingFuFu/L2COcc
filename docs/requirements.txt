@@ -1,0 +1,11 @@
+mmengine
+timm
+open3d-python
+easydict
+fvcore
+einops
+torchmetrics==0.7.0
+spconv-cu113
+pytorch-lightning==1.7.0
+setuptools==59.5.0
+numpy==1.19.5

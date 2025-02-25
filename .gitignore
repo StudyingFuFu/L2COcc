@@ -136,7 +136,7 @@ save/
 backups/
 slurm_tasks/
 pretrain/
-packages/
+# packages/
 final_model/
 logs
 pred
