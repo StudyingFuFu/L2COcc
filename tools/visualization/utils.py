@@ -1,4 +1,6 @@
 import os
+import pdb
+import yaml
 import torch
 import torch.nn.functional as F
 import numpy as np
@@ -20,30 +22,25 @@ SPTIAL_SHAPE = [256, 256, 32]
 TGT_VOXEL_SIZE = [0.2, 0.2, 0.2]
 TGT_POINT_CLOUD_RANGE = [0, -25.6, -2, 51.2, 25.6, 4.4]
 
-colormap_to_colors = np.array(
-    [
-        [0, 0, 0, 255],  # 0 undefined
-        [100, 150, 245, 255],  # 1 barrier  orange
-        [100, 230, 245, 255],  # 2 bicycle  Blue
-        [30, 60, 150, 255],  # 3 bus  Darkslategrey
-        [80, 30, 180, 255],  # 4 car  Crimson
-        [0, 0, 255, 255],  # 5 cons. Veh  Orangered
-        [255, 30, 30, 255],  # 6 motorcycle  Darkorange
-        [255, 40, 200, 255],  # 7 pedestrian  Darksalmon
-        [150, 30, 90, 255],  # 8 traffic cone  Red
-        [255, 0, 255, 255],  # 9 trailer  Slategrey
-        [255, 150, 255, 255],  # 10 truck Burlywood
-        [75, 0, 75, 255],  # 11 drive sur  Green
-        [175, 0, 75, 255],  # 12 other lat  nuTonomy green
-        [255, 200, 0, 255],  # 13 sidewalk
-        [255, 120, 50, 255],  # 14 terrain
-        [0, 175, 0, 255],  # 15 manmade
-        [135, 60, 0, 255],  # 16 vegeyation
-        [150, 240, 80, 255],  # 16 vegeyation
-        [255, 240, 150, 255],  # 16 vegeyation
-        [255, 0, 0, 255],  # 16 vegeyation
-    ],
-    dtype=np.float32)
+
+def get_color_map(dataset):
+    if dataset == 'SemanticKitti':
+        yaml_path = 'tools/SemanticKITTI.yaml'
+    elif dataset == 'Kitti360':
+        yaml_path = 'tools/KITTI360.yaml'
+    else:
+        raise ValueError('Invalid dataset')
+    with open(yaml_path, 'r') as f:
+        file = yaml.safe_load(f)
+        learning_map_inv = file['learning_map_inv']
+        color_map = file['color_map']
+        colors = []
+        for i in range(len(learning_map_inv.keys())):
+            color_map[learning_map_inv[i]].append(255)
+            colors.append(color_map[learning_map_inv[i]])
+        colors = np.array(colors)
+        colors = colors[:, [2, 1, 0, 3]]  # Convert BGR to RGB and keep the alpha channel
+        return colors
 
 
 def filter_points(points, range):
@@ -169,7 +166,7 @@ def show_point_cloud(points: np.ndarray,
     return vis
 
 
-def show_occ(occ_state, occ_show, voxel_size, vis=None, offset=[0, 0, 0]):
+def show_occ(occ_state, occ_show, voxel_size, colors=None, vis=None, offset=[0, 0, 0]):
     """
     Args:
         occ_state: (Dx, Dy, Dz), cls_id
@@ -181,10 +178,12 @@ def show_occ(occ_state, occ_show, voxel_size, vis=None, offset=[0, 0, 0]):
     Returns:
 
     """
-    colors = colormap_to_colors / 255
+    colors = colors / 255
     pcd, labels, occIdx = voxel2points(occ_state, occ_show, voxel_size)
     # pcd: (N, 3)  3: (x, y, z)
     # labels: (N, )  cls_id
+    # import pdb
+    # pdb.set_trace()
     _labels = labels % len(colors)
     pcds_colors = colors[_labels]  # (N, 4)
 

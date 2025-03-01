@@ -32,7 +32,7 @@ pip install mmsegmentation==0.14.1
 
 **c. Install mmdet3d 0.17.1 and DFA3D**
 
-Compared with the offical version, the mmdetection3d provided by [OccFormer](https://github.com/zhangyp15/OccFormer) further includes operations like bev-pooling, voxel pooling. 
+We use the same mmdet3d and dfa3d libraries as [CGFormer](https://github.com/pkqbajng/CGFormer). 
 
 ```shell
 cd packages

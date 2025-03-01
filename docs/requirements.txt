@@ -1,5 +1,5 @@
 mmengine
-timm
+timm==1.0.14
 open3d-python
 easydict
 fvcore
@@ -7,5 +7,7 @@ einops
 torchmetrics==0.7.0
 spconv-cu113
 pytorch-lightning==1.7.0
-setuptools==59.5.0
 numpy==1.19.5
+natten==0.14.6
+torch-scatter==2.0.9 -f https://data.pyg.org/whl/torch-1.10.0+cu111.html
+setuptools==59.5.0

@@ -6,7 +6,7 @@ from .basemodel import LightningBaseModel
 from .metric import SSCMetrics
 from mmdet3d.models import build_model
 from .utils import get_inv_map
-from .vis.visualization import save_tpv, save_weights
+from .visualization.utils import save_tpv, save_weights
 
 
 class pl_model(LightningBaseModel):

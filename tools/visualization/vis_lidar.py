@@ -4,8 +4,8 @@ import numpy as np
 import open3d as o3d
 import matplotlib.pyplot as plt
 
-from tools.vis.visualization import POINT_CLOUD_RANGE
-from tools.vis.visualization import filter_points
+from tools.visualization.utils import POINT_CLOUD_RANGE
+from tools.visualization.utils import filter_points
 
 
 def parse_args():
@@ -22,7 +22,7 @@ def get_pcd_path(root_path, dataset, sequence):
     if dataset == 'SemanticKitti':
         pcd_path = os.path.join(root_path, 'dataset', 'sequences', sequence, 'velodyne')
     elif dataset == 'Kitti360':
-        pcd_path = os.path.join(root_path, 'data_3d_raw', 'velodyne_points')
+        pcd_path = os.path.join(root_path, 'data_3d_raw', sequence, 'velodyne_points', 'data')
     else:
         raise ValueError('Invalid dataset')
     return pcd_path
@@ -33,7 +33,7 @@ def main():
     sequence = args.sequence
     root_path = args.root_path
     dataset = args.dataset
-    save_path = os.path.join(args.save_path, dataset, sequence, 'velodyne')
+    save_path = os.path.join(args.save_path, dataset, 'velodyne', sequence)
     os.makedirs(save_path, exist_ok=True)
 
     pcd_path = get_pcd_path(root_path, dataset, sequence)
@@ -42,7 +42,10 @@ def main():
 
     # Create a window for offscreen rendering (set visible=False)
     vis = o3d.visualization.Visualizer()
-    vis.create_window(visible=False)  # Set visible=False to prevent the window from appearing
+    # vis.create_window(visible=False)  # Set visible=False to prevent the window from appearing
+    vis.create_window(width=512, height=512)  # Set visible=False to prevent the window from appearing
+    render_option = vis.get_render_option()
+    render_option.point_size = 3.0  # Set the desired point size
 
     cnt = 0
     for pcd_name in pcd_names:
@@ -62,16 +65,24 @@ def main():
         point_cloud.points = o3d.utility.Vector3dVector(filtered_points)
 
         vis.add_geometry(point_cloud)
+        vis.poll_events()
+        vis.update_renderer()
 
-        # Set the camera parameters (view control)
         view_control = vis.get_view_control()
-        look_at = np.array([15, 0, 0])
-        front = np.array([-1, -0.3, 1])
-        up = np.array([0., 0., 1])
-        zoom = 0.6
 
-        view_control.set_lookat(look_at)
-        view_control.set_front(front)
+        # # view 1: 3rd person view
+        # look_at = np.array([15, 0, 0])
+        # front = np.array([-1, -0.3, 1])
+        # up = np.array([0., 0., 1])
+        # zoom = 0.6
+        # view_control.set_lookat(look_at)
+        # view_control.set_front(front)
+        # view_control.set_up(up)
+        # view_control.set_zoom(zoom)
+
+        # view 2: top-down view
+        up = np.array([1., 0., 1])
+        zoom = 0.5
         view_control.set_up(up)
         view_control.set_zoom(zoom)
 
@@ -84,9 +95,7 @@ def main():
         rgb_image_path = os.path.join(save_path, pcd_name.replace('.bin', '.png'))
         plt.imsave(rgb_image_path, np.asarray(image))
 
-        vis.clear_geometries()  # Clear the geometry for the next iteration
-
-    vis.destroy_window()
+        vis.remove_geometry(point_cloud)
 
 
 if __name__ == '__main__':

@@ -1,9 +1,9 @@
 # L2COcc: Lightweight Camera-Centric Semantic Scene Completion via Distillation of LiDAR Model
 
-## 🚀 News
+<!-- ## 🚀 News
 
 - **2025.x.xx** code released
-- **2024.x.xx** [**arXiv**](https://arxiv.org/abs/2405.13675) preprint released
+- **2024.x.xx** [**arXiv**](https://arxiv.org/abs/2405.13675) preprint released -->
 
 ## Introduction
 
@@ -15,15 +15,15 @@ The experimental evaluations demonstrate that our proposed method surpasses the 
 
 ## Method
 
-![overview](./docs/methodv0.png)
+<img src="./docs/png/methodv0.png" alt="overview" width="1200"/>
 
 The overall framework of our proposed L2COcc, comprised of three stages: voxel feature generation (indicated by the gray background}), TPV-based occupancy prediction network (indicated by the blue background}), and cross-modal knowledge distillation (indicated by the green background}).
 
 ## Quantitative Results
 
-![SemanticKITTI](./docs/semantickitti.png)
+<img src="./docs/png/semantickitti.png" alt="SemanticKITTI" width="1200"/>
 
-![KITTI360](./docs/kitti360.png)
+<img src="./docs/png/kitti360.png" alt="kitti360" width="1200"/>
 
 ## Getting Started
 
@@ -44,7 +44,6 @@ Many thanks to these exceptional open source projects:
 - [Symphonize](https://github.com/hustvl/Symphonies.git)
 - [DFA3D](https://github.com/IDEA-Research/3D-deformable-attention.git)
 - [VoxFormer](https://github.com/NVlabs/VoxFormer.git)
-- [OccFormer](https://github.com/zhangyp15/OccFormer.git)
 
 As it is not possible to list all the projects of the reference papers. If you find we leave out your repo, please contact us and we'll update the lists.
 
@@ -53,17 +52,9 @@ As it is not possible to list all the projects of the reference papers. If you f
 If you find our work beneficial for your research, please consider citing our paper and give us a star:
 
 ```
-@misc{CGFormer,
-      title={Context and Geometry Aware Voxel Transformer for Semantic Scene Completion}, 
-      author={Zhu Yu and Runming Zhang and Jiacheng Ying and Junchen Yu and Xiaohai Hu and Lun Luo and 						Siyuan Cao and Huiliang Shen},
-      year={2024},
-      eprint={2405.13675},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
-}
 ```
 
-If you encounter any issues, please contact zhu.yu.pk@gmail.com.
+If you encounter any issues, please contact samuraiwry@gmail.com.
 
 ## To do
 
