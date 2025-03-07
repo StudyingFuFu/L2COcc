@@ -23,6 +23,255 @@ TGT_VOXEL_SIZE = [0.2, 0.2, 0.2]
 TGT_POINT_CLOUD_RANGE = [0, -25.6, -2, 51.2, 25.6, 4.4]
 
 
+def get_img_path(root_path, dataset, sequence):
+    if dataset == 'SemanticKitti':
+        pcd_path = os.path.join(root_path, 'dataset', 'sequences', sequence, 'image_2')
+    elif dataset == 'Kitti360':
+        pcd_path = os.path.join(root_path, 'data_2d_raw', sequence, 'image_00', 'data_rect')
+    else:
+        raise ValueError('Invalid dataset')
+    return pcd_path
+
+
+def get_pcd_path(root_path, dataset, sequence):
+    if dataset == 'SemanticKitti':
+        pcd_path = os.path.join(root_path, 'dataset', 'sequences', sequence, 'velodyne')
+    elif dataset == 'Kitti360':
+        pcd_path = os.path.join(root_path, 'data_3d_raw', sequence, 'velodyne_points', 'data')
+    else:
+        raise ValueError('Invalid dataset')
+    return pcd_path
+
+
+def get_label_path(root_path, dataset, sequence):
+    if dataset == 'SemanticKitti':
+        pcd_path = os.path.join(root_path, 'labels', sequence)
+    elif dataset == 'Kitti360':
+        pcd_path = os.path.join(root_path, 'preprocess', 'labels', sequence)
+    else:
+        raise ValueError('Invalid dataset')
+    return pcd_path
+
+
+def create_window(vis, view, dataset):
+    if view == 'top_down' or view == 'third_person':
+        width = 512
+        height = 512
+    elif view == 'camera':
+        # if dataset == 'SemanticKitti':
+        #     width = 1280
+        #     height = 384
+        # elif dataset == 'Kitti360':
+        #     width = 1408
+        #     height = 384
+        width = 660
+        height = 200
+    else:
+        raise ValueError('Invalid dataset')
+    vis.create_window(width=width, height=height)
+    return vis
+
+
+def read_calib_semantickitti(calib_path):
+    """calib.txt: Calibration data for the cameras: P0/P1 are the 3x4 projection
+        matrices after rectification. Here P0 denotes the left and P1 denotes the
+        right camera. Tr transforms a point from velodyne coordinates into the
+        left rectified camera coordinate system. In order to map a point X from the
+        velodyne scanner to a point x in the i'th image plane, you thus have to
+        transform it like:
+        x = Pi * Tr * X
+        - 'image_00': left rectified grayscale image sequence
+        - 'image_01': right rectified grayscale image sequence
+        - 'image_02': left rectified color image sequence
+        - 'image_03': right rectified color image sequence
+    """
+    calib_all = {}
+    with open(calib_path, "r") as f:
+        for line in f.readlines():
+            if line == "\n":
+                break
+            key, value = line.split(":", 1)
+            calib_all[key] = np.array([float(x) for x in value.split()])
+
+    # reshape matrices
+    calib_out = {}
+    calib_out["P2"] = np.identity(4)  # 4x4 matrix
+    calib_out["P3"] = np.identity(4)  # 4x4 matrix
+    calib_out["P2"][:3, :4] = calib_all["P2"].reshape(3, 4)
+    calib_out["P3"][:3, :4] = calib_all["P3"].reshape(3, 4)
+    calib_out["Tr"] = np.identity(4)  # 4x4 matrix
+    calib_out["Tr"][:3, :4] = calib_all["Tr"].reshape(3, 4)
+
+    return calib_out
+
+
+def read_calib_kitti360(calib_path=None):
+    """
+    Tr transforms a point from velodyne coordinates into the 
+    left rectified camera coordinate system.
+    In order to map a point X from the velodyne scanner to a 
+    point x in the i'th image plane, you thus have to transform it like:
+    x = Pi * Tr * X
+    """
+    P2 = np.array([[552.554261, 0.000000, 682.049453, 0.000000], [0.000000, 552.554261, 238.769549, 0.000000],
+                   [0.000000, 0.000000, 1.000000, 0.000000]]).reshape(3, 4)
+
+    P3 = np.array([[552.554261, 0.000000, 682.049453, -328.318735], [0.000000, 552.554261, 238.769549, 0.000000],
+                   [0.000000, 0.000000, 1.000000, 0.000000]]).reshape(3, 4)
+
+    cam2velo = np.array([[0.04307104361, -0.08829286498, 0.995162929, 0.8043914418],
+                         [-0.999004371, 0.007784614041, 0.04392796942, 0.2993489574],
+                         [-0.01162548558, -0.9960641394, -0.08786966659, -0.1770225824], [0, 0, 0, 1]]).reshape(4, 4)
+
+    velo2cam = np.linalg.inv(cam2velo)
+    calib_out = {}
+    calib_out["P2"] = np.identity(4)  # 4x4 matrix
+    calib_out["P3"] = np.identity(4)
+    calib_out["P2"][:3, :4] = P2.reshape(3, 4)
+    calib_out["P3"][:3, :4] = P3.reshape(3, 4)
+    calib_out["Tr"] = np.identity(4)
+    calib_out["Tr"][:3, :4] = velo2cam[:3, :4]
+    return calib_out
+
+
+def set_view_control(vis, view, dataset, root_path, sequence):
+    view_control = vis.get_view_control()
+    if view == 'top_down':
+        look_at = np.array([25.6, 0, 0])
+        front = np.array([0, 0, 1])
+        up = np.array([1, 0, 1])
+        zoom = np.array([0.5])
+    elif view == 'third_person':
+        look_at = np.array([15, 0, 0])
+        front = np.array([-1, -0.3, 1])
+        up = np.array([0., 0., 1])
+        zoom = np.array([0.6])
+    elif view == 'camera':
+        # TODO: fix bug
+        # [Open3D WARNING] [ViewControl] ConvertFromPinholeCameraParameters() failed because window height and width do not match.
+
+        # if dataset == "SemanticKitti":
+        #     calib_path = os.path.join(root_path, 'dataset', 'sequences', sequence, 'calib.txt')
+        #     calib_out = read_calib_semantickitti(calib_path)
+        # elif dataset == "Kitti360":
+        #     calib_out = read_calib_kitti360()
+        # else:
+        #     raise ValueError('Invalid dataset')
+
+        # intrinsic = calib_out["P2"][:3, :3]
+        # extrinsic = calib_out["Tr"]
+
+        # pinhole_intrinsic = o3d.camera.PinholeCameraIntrinsic(
+        #     width=1280,
+        #     height=384,
+        #     fx=intrinsic[0, 0],
+        #     fy=intrinsic[1, 1],
+        #     cx=intrinsic[0, 2],
+        #     cy=intrinsic[1, 2],
+        # )
+        # camera_params = o3d.camera.PinholeCameraParameters()
+        # camera_params.intrinsic = pinhole_intrinsic  # 赋值 intrinsic
+        # camera_params.extrinsic = extrinsic  # 赋值 extrinsic
+        # view_control.convert_from_pinhole_camera_parameters(camera_params)
+
+        # look_at = np.array([3.5, 0, -0.08])
+        # front = np.array([-1, 0, 0])
+        # up = np.array([0, 0, 1])
+        # zoom = np.array([0.001])
+        look_at = np.array([87, 0, 0])
+        front = np.array([-1, 0, 0])
+        up = np.array([0, 0, 1])
+        zoom = np.array([0.94])
+    else:
+        raise ValueError('Invalid view')
+
+    view_control.set_lookat(look_at)
+    view_control.set_front(front)
+    view_control.set_up(up)
+    view_control.set_zoom(zoom)
+
+
+def init_vis(vis, view, dataset, root_path, sequence):
+
+    if view == 'top_down' or view == 'third_person':
+        width = 512
+        height = 512
+    elif view == 'camera':
+        if dataset == 'SemanticKitti':
+            width = 1280
+            height = 384
+        elif dataset == 'Kitti360':
+            width = 1408
+            height = 384
+        else:
+            raise ValueError('Invalid dataset')
+
+    if view == 'top_down':
+        look_at = np.array([25.6, 0, 0])
+        front = np.array([0, 0, 1])
+        up = np.array([1, 0, 1])
+        zoom = np.array([0.5])
+        vis.create_window(width=width, height=height)
+        view_control = vis.get_view_control()
+        view_control.set_lookat(look_at)
+        view_control.set_front(front)
+        view_control.set_up(up)
+        view_control.set_zoom(zoom)
+    elif view == 'third_person':
+        look_at = np.array([15, 0, 0])
+        front = np.array([-1, -0.3, 1])
+        up = np.array([0., 0., 1])
+        zoom = np.array([0.6])
+        vis.create_window(width=width, height=height)
+        view_control = vis.get_view_control()
+        view_control.set_lookat(look_at)
+        view_control.set_front(front)
+        view_control.set_up(up)
+        view_control.set_zoom(zoom)
+    elif view == 'camera':
+        if dataset == "SemanticKitti":
+            calib_path = os.path.join(root_path, 'dataset', 'sequences', sequence, 'calib.txt')
+            calib_out = read_calib_semantickitti(calib_path)
+        elif dataset == "Kitti360":
+            calib_out = read_calib_kitti360()
+        else:
+            raise ValueError('Invalid dataset')
+        # look_at = np.array([1, 0, 1])
+        # front = np.array([1, 0, 0])
+        # up = np.array([0, 0, 1])
+        # zoom = np.array([0.6])
+
+        intrinsic = calib_out["P2"][:3, :3]
+        extrinsic = calib_out["Tr"]
+
+        # 提取旋转矩阵 R 和平移向量 t
+        R = extrinsic[:3, :3]  # 旋转矩阵
+        t = extrinsic[:3, 3]  # 平移向量
+
+        # 计算相机在世界坐标系中的位置
+        camera_position = -R.T @ t  # 公式：C = -R^T * t
+
+        # 计算视角参数
+        front = -R[2, :]  # 相机-Z轴方向（即相机朝向）
+        up = R[1, :]  # 相机Y轴方向（即相机的顶部朝向）
+        look_at = camera_position + front  # 相机看向的目标点
+
+        # 设定缩放因子（可以手动调节）
+        zoom = np.array([1])
+
+        # 创建可视化窗口
+        vis.create_window(width=width, height=height)
+        view_control = vis.get_view_control()
+
+        # 设置相机视角
+        view_control.set_lookat(look_at)
+        view_control.set_front(front)
+        view_control.set_up(up)
+        view_control.set_zoom(zoom)
+    else:
+        raise ValueError('Invalid view')
+
+
 def get_color_map(dataset):
     if dataset == 'SemanticKitti':
         yaml_path = 'tools/SemanticKITTI.yaml'

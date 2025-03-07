@@ -36,10 +36,6 @@ class SemanticKITTIDataset(Dataset):
         self.data_root = data_root
         self.stereo_depth_root = stereo_depth_root
         self.ann_file = ann_file
-        if 'komorebi' in socket.gethostname():
-            self.data_root = '/home/komorebi/workspace/researches/01_datasets/semanticKITTI/dataset'
-            self.stereo_depth_root = '/home/komorebi/workspace/researches/01_datasets/semanticKITTI/sequences_msnet3d_depth'
-            self.ann_file = '/home/komorebi/workspace/researches/01_datasets/semanticKITTI/labels'
 
         self.test_mode = test_mode
         self.data_infos = self.load_annotations(self.ann_file)

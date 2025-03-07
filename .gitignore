@@ -129,6 +129,7 @@ dmypy.json
 .pyre/
 
 data/
+video/
 assets/
 outputs/
 work_dirs/

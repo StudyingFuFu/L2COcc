@@ -39,10 +39,6 @@ class KITTI360DatasetLC(Dataset):
         self.data_root = data_root
         self.stereo_depth_root = stereo_depth_root
         self.ann_file = ann_file
-        if 'ai' in socket.gethostname():
-            self.data_root = '/ailab/group/pjlab-adg1/ssd_dataset/Kitti360'
-            self.stereo_depth_root = '/ailab/group/pjlab-adg1/ssd_dataset/Kitti360/msnet3d_depth_kitti360'
-            self.ann_file = '/ailab/group/pjlab-adg1/ssd_dataset/Kitti360/preprocess/labels'
 
         self.test_mode = test_mode
         self.data_infos = self.load_annotations(self.ann_file)
