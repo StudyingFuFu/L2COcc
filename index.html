@@ -56,7 +56,7 @@
               Distillation of LiDAR Model</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
-              <span class="author-block">
+              <!-- <span class="author-block">
                 <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Ruoyu Wang</a><sup>*</sup>,</span>
               <span class="author-block">
                 <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Yukai Ma</a><sup>*</sup>,</span>
@@ -71,7 +71,23 @@
               <span class="author-block">
                 <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Yong Liu</a>,</span>
               <span class="author-block">
-                <a href="Forth AUTHOR PERSONAL LINK" target="_blank">Xingxing Zuo</a>,
+                <a href="Forth AUTHOR PERSONAL LINK" target="_blank">Xingxing Zuo</a>, -->
+              <span class="author-block">
+                Ruoyu Wang</a><sup>*</sup>,</span>
+              <span class="author-block">
+                Yukai Ma</a><sup>*</sup>,</span>
+              <span class="author-block">
+                Yi Yao</a>,</span>
+              <span class="author-block">
+                Sheng Tao</a>,</span>
+              <span class="author-block">
+                Zongzhi Zhu</a>,</span>
+              <span class="author-block">
+                Haoang Li</a>,</span>
+              <span class="author-block">
+                Yong Liu</a>,</span>
+              <span class="author-block">
+                Xingxing Zuo</a>,
               </span>
             </div>
 
@@ -84,7 +100,7 @@
             <div class="column has-text-centered">
               <div class="publication-links">
                 <!-- Arxiv PDF link -->
-                <!-- <span class="link-block">
+                <span class="link-block">
                   <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
@@ -92,7 +108,7 @@
                     </span>
                     <span>Paper</span>
                   </a>
-                </span> -->
+                </span>
 
                 <!-- Supplementary PDF link -->
                 <!-- <span class="link-block">
@@ -137,6 +153,7 @@
 
 
   <!-- Paper abstract -->
+  </style>
   <section class="section hero is-light">
     <div class="container is-max-desktop">
       <div class="columns is-centered has-text-centered">
@@ -163,30 +180,29 @@
   </section>
   <!-- End paper abstract -->
 
-  <!-- Teaser video-->
-  <section class="hero teaser">
-    <h2 class="title is-3" style="margin-left: 465px; margin-top: 30px;"> Introduction Video</h2>
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <video poster="" id="tree" autoplay controls muted loop height="100%">
-          <!-- Your video here -->
-          <source src="static/videos/IROS2025.mp4" type="video/mp4">
-        </video>
-        <h2 class="subtitle has-text-centered">
-        </h2>
+  <!-- Introduction video -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title" style="margin-left: 0px;">Introduction Video</h2>
+        <div class="item" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <video poster="" id="tree" autoplay controls muted loop style="width: 90%; height: auto;">
+            <!-- Your video here -->
+            <source src="static/videos/IROS2025.mp4" type="video/mp4">
+          </video>
+        </div>
       </div>
     </div>
   </section>
-  <!-- End teaser video -->
 
   <!-- Cover and Method -->
   <section class="hero is-small">
     <div class="hero-body">
       <div class="container">
-        <h2 class="title" style="margin-left: 215px;">Method</h2>
+        <h2 class="title" style="margin-left: 0px;">Method</h2>
         <div id="results-carousel" class="carousel results-carousel">
           <div class="item" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-            <img src="static/images/cover.png" alt="MY ALT TEXT" style="width: 60%; height: auto;" />
+            <img src="static/images/cover.png" alt="MY ALT TEXT" style="width: 65%; height: auto;" />
             <div style="width: 70%;">
               <h2 class="subtitle has-text-centered" style="margin-top: 20px;">
                 Top: An overview of our framework.<br>
@@ -196,7 +212,7 @@
           </div>
           <div class="item">
             <img src="static/images/method.png" alt="MY ALT TEXT"
-              style="display: block; margin: 0 auto; width: 70%; height: auto;" />
+              style="display: block; margin: 0 auto; width: 90%; height: auto;" />
           </div>
         </div>
       </div>
@@ -206,15 +222,15 @@
   <section class="hero is-small">
     <div class="hero-body">
       <div class="container">
-        <h2 class="title" style="margin-left: 215px;">Experience</h2>
+        <h2 class="title" style="margin-left: 0px;">Experience</h2>
         <div id="results-carousel" class="carousel results-carousel">
           <div class="item">
             <img src=" static/images/semantickitti.png" alt="MY ALT TEXT"
-              style="display: block; margin: 0 auto; width: 70%; height: auto; align-items: center;" />
+              style="display: block; margin: 0 auto; width: 100%; height: auto; align-items: center;" />
           </div>
           <div class="item">
-            <img src="static/images/kitti360.png" alt="MY ALT TEXT"
-              style="display: block; margin: 0 auto; width: 70%; height: auto; align-items: center;" />
+            <img src="static/images/kitti360_main.png" alt="MY ALT TEXT"
+              style="display: block; margin: 0 auto; width: 100%; height: auto; align-items: center;" />
           </div>
           <div class="item">
             <img src="static/images/efficiency.png" alt="MY ALT TEXT"
@@ -225,47 +241,44 @@
     </div>
   </section>
 
-
-  <!-- Teaser video-->
-  <section class="hero teaser">
-    <h2 class="title is-3" style="margin-left: 465px; margin-top: 30px;"> Visualizations For SSC Predictions</h2>
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <video poster="" id="tree" autoplay controls muted loop height="100%">
-          <!-- Your video here -->
-          <source src="static/videos/pred_third_person_ffmpeg.mp4" type="video/mp4">
-        </video>
-        <h2 class="subtitle has-text-centered">
-        </h2>
+  <!-- SSC Pred -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title" style="margin-left: 0px;">Visualizations</h2>
+        <div class="item" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <video poster="" id="tree" autoplay controls muted loop style="width: 100%; height: auto;">
+            <!-- Your video here -->
+            <source src="static/videos/pred_third_person_ffmpeg.mp4" type="video/mp4">
+          </video>
+        </div>
       </div>
     </div>
   </section>
-  <!-- End teaser video -->
 
-  <!-- Teaser video-->
-  <section class="hero teaser">
-    <h2 class="title is-3" style="margin-left: 465px; margin-top: 30px;"> Visualization For TPV Features and SSC
-      Predictions</h2>
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <video poster="" id="tree" autoplay controls muted loop height="100%">
-          <!-- Your video here -->
-          <source src="static/videos/tpv_and_pred_ffmpeg_semantickitti.mp4" type="video/mp4">
-        </video>
-        <h2 class="subtitle has-text-centered">
-        </h2>
-      </div>
-      <div class="hero-body">
-        <video poster="" id="tree" autoplay controls muted loop height="100%">
-          <!-- Your video here -->
-          <source src="static/videos/tpv_and_pred_ffmpeg_kitti360.mp4" type="video/mp4">
-        </video>
-        <h2 class="subtitle has-text-centered">
-        </h2>
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <!-- <h2 class="title" style="margin-left: 215px;">Visualizations</h2> -->
+        <div class="item" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <video poster="" id="tree" autoplay controls muted loop style="width: 100%; height: auto;">
+            <!-- Your video here -->
+            <source src="static/videos/tpv_and_pred_ffmpeg_semantickitti.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item"
+          style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 100px;">
+        </div>
+        <div class="item" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <video poster="" id="tree" autoplay controls muted loop style="width: 100%; height: auto;">
+            <!-- Your video here -->
+            <source src="static/videos/tpv_and_pred_ffmpeg_kitti360.mp4" type="video/mp4">
+          </video>
+        </div>
       </div>
     </div>
   </section>
-  <!-- End teaser video -->
+
 
 
 
