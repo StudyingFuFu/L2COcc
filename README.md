@@ -31,7 +31,9 @@ state-of-the-arts method.
 
 ## Video Demonstration
 <img src="./docs/png/pred_third_person_repo.gif" width="1200" />
+
 More video demonstrations can be found at the [project page](https://studyingfufu.github.io/L2COcc/).
+
 
 ## Method
 
