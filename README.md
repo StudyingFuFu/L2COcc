@@ -4,6 +4,8 @@
 
 - **2025.x.xx** code released
 - **2024.x.xx** [**arXiv**](https://arxiv.org/abs/2405.13675) preprint released -->
+##
+<img src="./docs/png/pred_third_person_repo.gif" width="1200" />
 
 ## Introduction
 
@@ -28,9 +30,8 @@ accuracy on both the SemanticKITTI and SSCBench-KITTI-
 lightweight, exhibiting a reduction in both memory consump-
 tion and inference time by over 23% compared to the current
 state-of-the-arts method.
-## Video Demonstration
+<!-- ## Video Demonstration -->
 
-<video src="./docs/png/pred_third_person_repo_ffmpeg.mp4" controls width="1200"></video>
 
 ## Method
 
