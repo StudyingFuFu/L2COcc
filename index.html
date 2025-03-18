@@ -101,7 +101,7 @@
               <div class="publication-links">
                 <!-- Arxiv PDF link -->
                 <span class="link-block">
-                  <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                  <a href="https://arxiv.org/pdf/2503.12369" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fas fa-file-pdf"></i>
@@ -133,14 +133,14 @@
                 </span>
 
                 <!-- ArXiv abstract Link -->
-                <!-- <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2503.12369" target="_blank"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="ai ai-arxiv"></i>
                     </span>
-                    <span>arXiv</span> -->
-                </a>
+                    <span>arXiv</span>
+                  </a>
                 </span>
               </div>
             </div>
@@ -242,6 +242,21 @@
   </section>
 
   <!-- SSC Pred -->
+  <!-- <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <h2 class="title" style="margin-left: 0px;">Visualizations</h2>
+        <div class="item" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <video poster="" id="tree" autoplay controls muted loop style="width: 100%; height: auto;">
+            <!-- Your video here -->
+  <!-- <source src="static/videos/pred_third_person_ffmpeg.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </section> --> -->
+
+  <!-- SemanticKITTI -->
   <section class="hero is-small">
     <div class="hero-body">
       <div class="container">
@@ -249,19 +264,14 @@
         <div class="item" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
           <video poster="" id="tree" autoplay controls muted loop style="width: 100%; height: auto;">
             <!-- Your video here -->
-            <source src="static/videos/pred_third_person_ffmpeg.mp4" type="video/mp4">
+            <source src="static/videos/pred_gt_ffmpeg_semantickitti.mp4" type="video/mp4">
           </video>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="hero is-small">
-    <div class="hero-body">
-      <div class="container">
-        <!-- <h2 class="title" style="margin-left: 215px;">Visualizations</h2> -->
+        <div class="item"
+          style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 100px;">
+        </div>
         <div class="item" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
-          <video poster="" id="tree" autoplay controls muted loop style="width: 100%; height: auto;">
+          <video poster="" id="tree" autoplay controls muted loop style="width: 87%; height: auto;">
             <!-- Your video here -->
             <source src="static/videos/tpv_and_pred_ffmpeg_semantickitti.mp4" type="video/mp4">
           </video>
@@ -272,7 +282,7 @@
         <div class="item" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
           <video poster="" id="tree" autoplay controls muted loop style="width: 100%; height: auto;">
             <!-- Your video here -->
-            <source src="static/videos/tpv_and_pred_ffmpeg_kitti360.mp4" type="video/mp4">
+            <source src="static/videos/tpv_and_weight_ffmpeg_semantickitti.mp4" type="video/mp4">
           </video>
         </div>
       </div>
@@ -280,6 +290,38 @@
   </section>
 
 
+  <!-- KITTI360 -->
+  <section class="hero is-small">
+    <div class="hero-body">
+      <div class="container">
+        <!-- <h2 class="title" style="margin-left: 215px;">Visualizations</h2> -->
+        <div class="item" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <video poster="" id="tree" autoplay controls muted loop style="width: 100%; height: auto;">
+            <!-- Your video here -->
+            <source src="static/videos/pred_gt_ffmpeg_kitti360.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item"
+          style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 100px;">
+        </div>
+        <div class="item" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <video poster="" id="tree" autoplay controls muted loop style="width: 87%; height: auto;">
+            <!-- Your video here -->
+            <source src="static/videos/tpv_and_pred_ffmpeg_kitti360.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="item"
+          style="display: flex; flex-direction: column; align-items: center; text-align: center; margin-top: 100px;">
+        </div>
+        <div class="item" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+          <video poster="" id="tree" autoplay controls muted loop style="width: 100%; height: auto;">
+            <!-- Your video here -->
+            <source src="static/videos/tpv_and_weight_ffmpeg_kitti360.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </section>
 
 
   <!-- Video carousel -->
@@ -313,7 +355,15 @@
   <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
-      <pre><code>BibTex Code Here</code></pre>
+      <pre><code>@misc{wang2025l2cocclightweightcameracentricsemantic,
+      title={L2COcc: Lightweight Camera-Centric Semantic Scene Completion via Distillation of LiDAR Model}, 
+      author={Ruoyu Wang and Yukai Ma and Yi Yao and Sheng Tao and Haoang Li and Zongzhi Zhu and Yong Liu and Xingxing Zuo},
+      year={2025},
+      eprint={2503.12369},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2503.12369}, 
+}</code></pre>
     </div>
   </section>
   <!--End BibTex citation -->
