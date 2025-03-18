@@ -49,6 +49,8 @@ step 2. Refer to [dataset.md](./docs/dataset.md) to prepare SemanticKITTI and KI
 
 step 3. Refer to [train_and_eval.md](./docs/train_and_eval.md) for training and evaluation.
 
+step 3. Refer to [visualization.md](./docs/visualization.md) for visualizations.
+
 ## Results
 1. SemanticKITTI
      Model | Sensor | Split | IoU | mIoU | Download |
@@ -84,12 +86,13 @@ Many thanks to these exceptional open source projects:
 
 <!-- As it is not possible to list all the projects of the reference papers. If you find we leave out your repo, please contact us and we'll update the lists. -->
 
-<!-- ## Bibtex
+## Bibtex
 
 If you find our work beneficial for your research, please consider citing our paper and give us a star:
 
 ```
-``` -->
+TODO: add bibtex entry.
+```
 
 If you encounter any issues, please contact samuraiwry@gmail.com.
 
