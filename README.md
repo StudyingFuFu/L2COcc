@@ -61,19 +61,19 @@ step 4. Refer to [visualization.md](./docs/visualization.md) for visualizations.
 1. SemanticKITTI
      Model | Sensor | Split | IoU | mIoU | Download |
     | :---: | :---: | :---: | :---: | :---: | :---: |
-    | L2COcc-c | Camera | val  | 45.56 | 16.72 | [ckpt](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_c_semantickitti_1672_4556.ckpt)/[log](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_c_semantickitti_val.txt)|
-    | L2COcc-c | Camera | test | 44.31 | 17.03 | [output](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_c_semantickitti_test.txt)|
-    | L2COcc-d | Camera | val  | 45.30 | 18.22 | [ckpt](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_d_semantickitti_1822_4530.ckpt)/[log](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_d_semantickitti_val.txt)|
-    | L2COcc-d | Camera | test | 45.37 | 18.18 | [output](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_d_semantickitti_test.txt)|
-    | L2COcc-l | LiDAR  | val  | 60.66 | 24.21 | [ckpt](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_l_semantickitti_2421_6066.ckpt)/[log](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_l_semantickitti_val.txt)|
-    | L2COcc-l | LiDAR  | test | 60.32 | 23.37 | [output](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_l_semantickitti_test.txt)|
+    | L2COcc-C | Camera | val  | 45.56 | 16.72 | [ckpt](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_c_semantickitti_1672_4556.ckpt)/[log](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_c_semantickitti_val.txt)|
+    | L2COcc-C | Camera | test | 44.31 | 17.03 | [output](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_c_semantickitti_test.txt)|
+    | L2COcc-D | Camera | val  | 45.30 | 18.22 | [ckpt](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_d_semantickitti_1822_4530.ckpt)/[log](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_d_semantickitti_val.txt)|
+    | L2COcc-D | Camera | test | 45.37 | 18.18 | [output](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_d_semantickitti_test.txt)|
+    | L2COcc-L | LiDAR  | val  | 60.66 | 24.21 | [ckpt](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_l_semantickitti_2421_6066.ckpt)/[log](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_l_semantickitti_val.txt)|
+    | L2COcc-L | LiDAR  | test | 60.32 | 23.37 | [output](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_l_semantickitti_test.txt)|
 
 2. KITTI360
      Model | Sensor | Split | IoU | mIoU | Download |
     | :---: | :---: | :---: | :---: | :---: | :---: |
-    | L2COcc-c | Camera | test  | 48.07 | 20.11 | [ckpt](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_c_kitti360_2011_4807.ckpt)/[log](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_c_kitti360_test.txt)|
-    | L2COcc-d | Camera | test  | 48.83 | 20.99 | [ckpt](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_d_kitti360_2099_4883.ckpt)/[log](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_d_kitti360_test.txt)|
-    | L2COcc-l | LiDAR  | test  | 57.60 | 25.22 | [ckpt](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_l_kitti360_2521_5760.ckpt)/[log](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_l_kitti360_test.txt)|
+    | L2COcc-C | Camera | test  | 48.07 | 20.11 | [ckpt](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_c_kitti360_2011_4807.ckpt)/[log](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_c_kitti360_test.txt)|
+    | L2COcc-D | Camera | test  | 48.83 | 20.99 | [ckpt](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_d_kitti360_2099_4883.ckpt)/[log](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_d_kitti360_test.txt)|
+    | L2COcc-L | LiDAR  | test  | 57.60 | 25.22 | [ckpt](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_l_kitti360_2521_5760.ckpt)/[log](https://github.com/StudyingFuFu/L2COcc/releases/download/v1.0/l2cocc_l_kitti360_test.txt)|
 
 ## Acknowledgement
 
