@@ -39,7 +39,7 @@ More video demonstrations can be found at the [project page](https://studyingfuf
 
 <img src="./docs/png/methodv0.png" alt="overview" width="1200"/>
 
-The overall framework of our proposed L2COcc, comprised of three stages: voxel feature generation (indicated by the gray background}), TPV-based occupancy prediction network (indicated by the blue background}), and cross-modal knowledge distillation (indicated by the green background}).
+The overall framework of our proposed L2COcc, comprised of three stages: voxel feature generation (indicated by the gray background), TPV-based occupancy prediction network (indicated by the blue background), and cross-modal knowledge distillation (indicated by the green background).
 
 ## Quantitative Results
 
