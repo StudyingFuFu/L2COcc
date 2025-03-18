@@ -26,7 +26,7 @@ the current state-of-the-art vision-based SSC methods regarding
 accuracy on both the SemanticKITTI and SSCBench-KITTI-
 360 benchmarks, respectively. Additionally, our method is more
 lightweight, exhibiting a reduction in both memory consump-
-tion and inference time by over 25% compared to the current
+tion and inference time by over 23% compared to the current
 state-of-the-arts method.
 ## Video Demonstration
 
