@@ -28,9 +28,10 @@ accuracy on both the SemanticKITTI and SSCBench-KITTI-
 lightweight, exhibiting a reduction in both memory consump-
 tion and inference time by over 23% compared to the current
 state-of-the-arts method.
-<!-- ## Video Demonstration -->
 
+## Video Demonstration
 <img src="./docs/png/pred_third_person_repo.gif" width="1200" />
+More video demonstrations can be found at the [project page](https://studyingfufu.github.io/L2COcc/).
 
 ## Method
 
