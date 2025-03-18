@@ -4,8 +4,6 @@
 
 - **2025.x.xx** code released
 - **2024.x.xx** [**arXiv**](https://arxiv.org/abs/2405.13675) preprint released -->
-##
-<img src="./docs/png/pred_third_person_repo.gif" width="1200" />
 
 ## Introduction
 
@@ -32,6 +30,7 @@ tion and inference time by over 23% compared to the current
 state-of-the-arts method.
 <!-- ## Video Demonstration -->
 
+<img src="./docs/png/pred_third_person_repo.gif" width="1200" />
 
 ## Method
 
