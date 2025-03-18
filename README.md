@@ -55,7 +55,7 @@ step 2. Refer to [dataset.md](./docs/dataset.md) to prepare SemanticKITTI and KI
 
 step 3. Refer to [train_and_eval.md](./docs/train_and_eval.md) for training and evaluation.
 
-step 3. Refer to [visualization.md](./docs/visualization.md) for visualizations.
+step 4. Refer to [visualization.md](./docs/visualization.md) for visualizations.
 
 ## Results
 1. SemanticKITTI
