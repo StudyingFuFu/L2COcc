@@ -7,7 +7,7 @@
 
 ## Introduction
 
-Abstract— Semantic Scene Completion (SSC) constitutes a
+Semantic Scene Completion (SSC) constitutes a
 pivotal element in autonomous driving perception systems,
 tasked with inferring the 3D semantic occupancy of a scene
 from sensory data. To improve accuracy, prior research has
@@ -28,6 +28,9 @@ accuracy on both the SemanticKITTI and SSCBench-KITTI-
 lightweight, exhibiting a reduction in both memory consump-
 tion and inference time by over 25% compared to the current
 state-of-the-arts method.
+## Video Demonstration
+
+<video src="./docs/png/pred_third_person_repo_ffmpeg.mp4" controls width="1200"></video>
 
 ## Method
 
@@ -91,7 +94,15 @@ Many thanks to these exceptional open source projects:
 If you find our work beneficial for your research, please consider citing our paper and give us a star:
 
 ```
-TODO: add bibtex entry.
+@misc{wang2025l2cocclightweightcameracentricsemantic,
+      title={L2COcc: Lightweight Camera-Centric Semantic Scene Completion via Distillation of LiDAR Model}, 
+      author={Ruoyu Wang and Yukai Ma and Yi Yao and Sheng Tao and Haoang Li and Zongzhi Zhu and Yong Liu and Xingxing Zuo},
+      year={2025},
+      eprint={2503.12369},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV},
+      url={https://arxiv.org/abs/2503.12369}, 
+}
 ```
 
 If you encounter any issues, please contact samuraiwry@gmail.com.
